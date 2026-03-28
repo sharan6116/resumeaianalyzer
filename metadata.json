@@ -1,0 +1,5 @@
+{
+  "name": "ResumeAIAnalyzer",
+  "description": "Extract skills, predict job roles, get a resume score, and save analysis history using AI.",
+  "requestFramePermissions": []
+}

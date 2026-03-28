@@ -1,0 +1,36 @@
+{
+  "entities": {
+    "Analysis": {
+      "title": "Analysis",
+      "description": "A saved resume analysis result.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The UID of the user who saved the analysis." },
+        "fileName": { "type": "string", "description": "The name of the uploaded file." },
+        "predictedRole": { "type": "string", "description": "The predicted job role." },
+        "resumeScore": { "type": "number", "description": "The overall resume score." },
+        "summary": { "type": "string", "description": "A brief professional summary." },
+        "improvements": { "type": "array", "items": { "type": "string" }, "description": "List of suggested improvements." },
+        "recommendations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "role": { "type": "string" },
+              "missingSkills": { "type": "array", "items": { "type": "string" } },
+              "matchPercentage": { "type": "number" }
+            }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the analysis was saved." }
+      },
+      "required": ["userId", "predictedRole", "resumeScore", "summary", "improvements", "recommendations", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/analyses/{analysisId}": {
+      "schema": "Analysis",
+      "description": "Collection of saved resume analyses."
+    }
+  }
+}
